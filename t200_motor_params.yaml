@@ -1,0 +1,27 @@
+100: &base_t200
+  # DRIVE task: common parameters.
+  drive.current_brake_pu:                   0.3
+  # DRIVE task: run strategy.
+  drive.runner.type:                        1             # Use the passive spinup run strategy.
+  drive.runner.1_passive.velocity_off_on:   [5.0, 10.0]
+  # Motor
+  motor.resistance:                         0.0
+  motor.current_ramp:                       5000          # From the application requirements.
+  # Cyphal/CAN parameters.
+  uavcan.can.bitrate:                       [1000000, 0]
+  uavcan.can.count:                         1             # In this setup we are not using CAN2.
+  # Cyphal ports.
+  uavcan.pub.dq.id:                         1000
+  uavcan.pub.dynamics.id:                   1001
+  uavcan.pub.power.id:                      1002
+  uavcan.sub.setpoint_rat_torque.id:        1200
+  # General parameters.
+  sys.debug:				    false
+
+101:
+  <<:   *base_t200
+  uavcan.pub.dq.id:                         1100
+  uavnan.pub.dynamics.id:                   1101
+  uavcan.pub.power.id:                      1102
+  uavcan.sub.setpoint_rat_torque.id:        1201
+
