@@ -4,9 +4,17 @@
   # DRIVE task: run strategy.
   drive.runner.type:                        1             # Use the passive spinup run strategy.
   drive.runner.1_passive.velocity_off_on:   [5.0, 10.0]
-  # Motor
-  motor.resistance:                         0.0
   motor.current_ramp:                       5000          # From the application requirements.
+  
+  # Motor Params
+  motor.mechanical_ratio:                   14 # 14 Poles per: https://discuss.bluerobotics.com/t/t200-thruster-questions-poles-max-voltage-e-bike-controller/2442
+  motor.current_max:                        24
+  
+  # Measured Params
+  motor.resistance:                         0.13481730222702026
+  motor.flux_linkage:                       0.0017597193364053965
+  motor.inductance_dq:                      [3.27029156323988e-05, 3.27029156323988e-05]
+  
   # Cyphal/CAN parameters.
   uavcan.can.bitrate:                       [1000000, 0]
   uavcan.can.count:                         1             # In this setup we are not using CAN2.
