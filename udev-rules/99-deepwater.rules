@@ -1,0 +1,1 @@
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0C45", ATTTRS{idProduct}="6366", ATTRS{serial}=="SN00009", SYMLINK+="ttyUSB-DeepWater"
