@@ -1,5 +1,4 @@
-
-#! /usr/bin/bash
+#!/usr/bin/bash
 export CYPHAL_PATH="$HOME/.cyphal:$CYPHAL_PATH"
 export UAVCAN__CAN__IFACE='socketcan:slcan0'
 export UAVCAN__CAN__MTU=8

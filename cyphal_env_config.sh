@@ -1,5 +1,7 @@
 #!/bin/bash
 mkdir -p ~/.cyphal      # Ensure the directory actually exists# Add all namespaces from the public regulated data types repository:
+cp ./setup_slcan.sh ~/.local/bin/
+sudo chmod +x ~/.local/bin/setup_slcan.sh
 
 wget https://github.com/OpenCyphal/public_regulated_data_types/archive/refs/heads/master.zip -O dsdl.zip
 unzip dsdl.zip -d ~/.cyphal
