@@ -24,7 +24,7 @@ echo "deb [signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://package
 # Install ROS 2 Humble
 echo "Installing ROS 2 Humble..."
 apt update
-apt install ros-humble-desktop -y
+apt install ros-humble-desktop ros-dev-tools -y
 
 # Environment setup
 echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
