@@ -1,35 +1,63 @@
-100: &base_t200
-  # DRIVE task: common parameters.
-  drive.current_brake_pu:                   0.3
-  # DRIVE task: run strategy.
-  drive.runner.type:                        1             # Use the passive spinup run strategy.
-  drive.runner.1_passive.velocity_off_on:   [5.0, 10.0]
-  motor.current_ramp:                       5000          # From the application requirements.
-  
-  # Motor Params
-  motor.mechanical_ratio:                   14 # 14 Poles per: https://discuss.bluerobotics.com/t/t200-thruster-questions-poles-max-voltage-e-bike-controller/2442
-  motor.current_max:                        24
-  
-  # Measured Params
-  motor.resistance:                         0.13481730222702026
-  motor.flux_linkage:                       0.0017597193364053965
-  motor.inductance_dq:                      [3.27029156323988e-05, 3.27029156323988e-05]
-  
-  # Cyphal/CAN parameters.
-  uavcan.can.bitrate:                       [1000000, 0]
-  uavcan.can.count:                         1             # In this setup we are not using CAN2.
-  # Cyphal ports.
-  uavcan.pub.dq.id:                         1000
-  uavcan.pub.dynamics.id:                   1001
-  uavcan.pub.power.id:                      1002
-  uavcan.sub.setpoint_rat_torque.id:        1200
-  # General parameters.
-  sys.debug:				    false
+120: &base_t200
+  # Common parameters.
+  motor.current_ramp:               5000
+  mns.deadman_timeout:              0.5
+  mns.ratiometric_setpoint_min:     0
+  mns.ratiometric_to_absolute_mul:  0
+  mns.setpoint_index:               0
 
-101:
+  motor.mechanical_ratio: 7 # 14 Poles from T200 / 2
+  motor.current_max:      35 # Guesstimate
+
+  # Measured from lab T200
+  motor.resistance:       0.13818301260471344
+  motor.flux_linkage:     0.0017590541392564774
+  motor.inductance_dq:    [0.000034264994610566646,0.000034264994610566646]
+  
+  uavcan.can.bitrate: [1000000, 0]
+  uavcan.can.count:   1 # Don't have redundency built in quite yet
+  
+  # Disable other topics, will comment back in as more useful
+  uavcan.pub.dq.id:         0xFFFF
+  uavcan.pub.dynamics.id:   0xFFFF
+  uavcan.pub.power.id:      0xFFFF
+  uavcan.sub.readiness.id:  0xFFFF
+
+  # Enable currently implemented topics
+  uavcan.sub.setpoint_rat_torque.id:  1100
+  uavcan.pub.status.id:               1200
+
+121:
   <<:   *base_t200
-  uavcan.pub.dq.id:                         1100
-  uavnan.pub.dynamics.id:                   1101
-  uavcan.pub.power.id:                      1102
-  uavcan.sub.setpoint_rat_torque.id:        1201
+  uavcan.sub.setpoint_rat_torque.id: 1101
+  uavcan.pub.status.id:              1201
 
+122:
+  <<:   *base_t200
+  uavcan.sub.setpoint_rat_torque.id: 1102
+  uavcan.pub.status.id:              1202
+
+123:
+  <<:   *base_t200
+  uavcan.sub.setpoint_rat_torque.id: 1103
+  uavcan.pub.status.id:              1203
+
+124:
+  <<:   *base_t200
+  uavcan.sub.setpoint_rat_torque.id: 1104
+  uavcan.pub.status.id:              1204
+
+125:
+  <<:   *base_t200
+  uavcan.sub.setpoint_rat_torque.id: 1105
+  uavcan.pub.status.id:              1205
+
+126:
+  <<:   *base_t200
+  uavcan.sub.setpoint_rat_torque.id: 1106
+  uavcan.pub.status.id:              1206
+
+127:
+  <<:   *base_t200
+  uavcan.sub.setpoint_rat_torque.id: 1107
+  uavcan.pub.status.id:              1207
