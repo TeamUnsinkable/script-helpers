@@ -1,0 +1,12 @@
+[Unit]
+Description=A Service to start the DWE Streamer on boot
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/bin/sh -c 'dwe-os-1 start 5600 10.10.69.101'
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
