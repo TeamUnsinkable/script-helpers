@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/bin/sh -c 'dwe-os-1 start 5600 $(hostname -I | grep -oE '\b10\.10\.69\.[0-9]{1,3}\b')'
+ExecStart=/bin/sh -c 'dwe-os-1 reset && dwe-os-1 start 5600 $(hostname -I | grep -oE '\b10\.10\.69\.[0-9]{1,3}\b')'
 Restart=on-failure
 
 [Install]
